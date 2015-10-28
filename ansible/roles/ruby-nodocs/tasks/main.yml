@@ -1,0 +1,7 @@
+---
+- name: Turn off docgen
+  copy: src=gemrc dest={{ item }}/.gemrc
+  with_items:
+    - /home/vagrant
+    - /root
+

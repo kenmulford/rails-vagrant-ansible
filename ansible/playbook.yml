@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: true
+  vars_files:
+    - config.yml
+  roles:
+    - { role: rvm_io.rvm1-ruby, tags: ruby, rvm1_rubies: ['ruby-{{ ruby_version }}'] }
+    - ruby-nodocs
+    - rails
+    - postgres
+    - git

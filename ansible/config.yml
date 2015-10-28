@@ -1,0 +1,9 @@
+---
+
+ruby_version:     2.2.3
+# rubygems_version: 2.4.8
+rails_version:    4.2.4
+
+db_name:          mydb
+db_user:          myuser
+db_password:      mypass

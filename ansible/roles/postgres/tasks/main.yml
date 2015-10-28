@@ -1,0 +1,20 @@
+---
+- name: Install Postgres
+  apt: name={{ item }} state=present
+  with_items:
+    - postgresql
+    - postgresql-contrib
+    - postgresql-client
+
+- name: Install Postgres task dependencies
+  apt: pkg=python-psycopg2 state=present
+
+- name: Set up Postgres app database
+  postgresql_db: name={{ db_name }}
+  sudo: yes
+  sudo_user: postgres
+
+- name: Set up Postgres app user
+  postgresql_user: db={{ db_name }} name={{ db_user }} password={{ db_password }} priv=ALL
+  sudo: yes
+  sudo_user: postgres
