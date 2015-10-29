@@ -19,3 +19,13 @@
   postgresql_user: db={{ db_name }} name={{ db_user }} password={{ db_password }} priv=ALL
   sudo: yes
   sudo_user: postgres
+
+- name: Make Postgres listen for connections from host
+  lineinfile: dest=/etc/postgresql/9.3/main/postgresql.conf regexp='^listen_addresses ' line="listen_addresses = '*'"
+  notify:
+    - restart postgres
+
+- name: Make Postgres permit connections from host
+  lineinfile: dest=/etc/postgresql/9.3/main/pg_hba.conf line='host all all 0.0.0.0/0 md5'
+  notify:
+    - restart postgres
