@@ -1,0 +1,15 @@
+---
+- name: Lock RubyGems version
+  command: "gem update --system {{ rubygems_version }}"
+  when: rubygems_version is defined
+
+# To get Rails 4.2.4 working
+# http://stackoverflow.com/questions/29317640/gem-install-rails-fails-on-ubuntu
+- name: Install Rails native build dependencies
+  apt: name=libgmp-dev state=present
+
+- name: Install Rails
+  gem: "name=rails version={{ rails_version }} state=present user_install=no"
+
+- name: Install JS runtime needed by Rails
+  apt: name=nodejs state=present
