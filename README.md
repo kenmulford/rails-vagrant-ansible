@@ -2,7 +2,7 @@
 
 A Vagrant box for Rails development, provisioned with Ansible.
 
-## Usage
+## Installation
 
 - Install Ansible
 - Run `ansible-galaxy install rvm_io.rvm1-ruby`
@@ -21,6 +21,10 @@ Vagrantfile
 - Run `rails s -b 0.0.0.0`
 
 Then your app will be accessible at [http://localhost:3000](http://localhost:3000)
+
+## Usage
+
+
 
 ## License
 
