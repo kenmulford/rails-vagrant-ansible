@@ -11,14 +11,20 @@
   apt: pkg=python-psycopg2 state=present
 
 - name: Set up Postgres app database
-  postgresql_db: name={{ db_name }}
+  postgresql_db: name={{ item }}
   sudo: yes
   sudo_user: postgres
+  with_items:
+    - "{{ db_name }}"
+    - "{{ db_name }}_test"
 
 - name: Set up Postgres app user
-  postgresql_user: db={{ db_name }} name={{ db_user }} password={{ db_password }} priv=ALL
+  postgresql_user: db={{ item }} name={{ db_user }} password={{ db_password }} priv=ALL
   sudo: yes
   sudo_user: postgres
+  with_items:
+    - "{{ db_name }}"
+    - "{{ db_name }}_test"
 
 - name: Make Postgres listen for connections from host
   lineinfile: dest=/etc/postgresql/9.3/main/postgresql.conf regexp='^listen_addresses ' line="listen_addresses = '*'"
