@@ -4,8 +4,8 @@ A Vagrant box for Rails development, provisioned with Ansible.
 
 ## Installation
 
-- Install Ansible
-- Run `ansible-galaxy install rvm_io.rvm1-ruby`
+- [Install Ansible](http://docs.ansible.com/ansible/intro_installation.html)
+- Run `sudo ansible-galaxy install rvm_io.rvm1-ruby`
 - Copy the following into your Rails app folder: (if this is a new Rails app that hasn't been created yet, copy them into the project folder you want to use.)
 
 ```
