@@ -8,5 +8,6 @@
     - ruby-nodocs
     - rails
     - postgres
+    - redis
     - git
     - heroku
