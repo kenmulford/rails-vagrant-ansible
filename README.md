@@ -42,6 +42,13 @@ Vagrantfile
 
 Then your app will be accessible at [http://localhost:3000](http://localhost:3000)
 
+### Accessing Services
+
+Any service that runs in the virtual machine that you want access to on your host (i.e. in a web browser) needs to bind to 0.0.0.0, not localhost. The command to do this is different for different systems. For example:
+
+- `bin/rails server -b 0.0.0.0`
+- `mailcatcher --ip 0.0.0.0`
+
 ## License
 
 MIT. See License file for more info.

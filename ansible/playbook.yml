@@ -9,5 +9,6 @@
     - rails
     - postgres
     - redis
+    - mailcatcher
     - git
     - heroku
