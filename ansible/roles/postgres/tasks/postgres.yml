@@ -1,0 +1,21 @@
+---
+- name: Install Postgres
+  apt: name={{ item }} state=present
+  with_items:
+    - postgresql
+    - postgresql-contrib
+    - postgresql-client
+    - libpq-dev
+
+- name: Install Postgres task dependencies
+  apt: pkg=python-psycopg2 state=present
+
+- name: Make Postgres listen for connections from host
+  lineinfile: dest=/etc/postgresql/9.3/main/postgresql.conf regexp='^listen_addresses ' line="listen_addresses = '*'"
+  notify:
+    - restart postgres
+
+- name: Make Postgres permit connections from host
+  lineinfile: dest=/etc/postgresql/9.3/main/pg_hba.conf line='host all all 0.0.0.0/0 md5'
+  notify:
+    - restart postgres

@@ -1,0 +1,16 @@
+---
+- name: Set up Postgres app database
+  postgresql_db: name={{ item }}
+  sudo: yes
+  sudo_user: postgres
+  with_items:
+    - "{{ db_name }}"
+    - "{{ db_name }}_test"
+
+- name: Set up Postgres app user
+  postgresql_user: db={{ item }} name={{ db_user }} password={{ db_password }} priv=ALL
+  sudo: yes
+  sudo_user: postgres
+  with_items:
+    - "{{ db_name }}"
+    - "{{ db_name }}_test"
