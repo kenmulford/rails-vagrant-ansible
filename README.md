@@ -16,6 +16,12 @@ Vagrantfile
 - Edit `ansible/playbook.yml` to comment out any installations you don't need
 - Edit `ansible/config.yml` to configure versions and DB setup info
 - From within your Rails app folder, run `vagrant up`
+
+## Usage
+
+- From within your Rails app folder, run `vagrant ssh`. This will connect you to the Vagrant box.
+- From within the Vagrant box, run `cd /vagrant`
+- If this is a new Rails app that hasn't been created yet, run `rails new .`. This will create a new Rails app in that folder
 - Set up your app to use the database connection provided. Either:
   - Install the [`dotenv`](https://github.com/bkeepers/dotenv) gem and update your `database.yml` with the following entries:
 
@@ -31,12 +37,6 @@ Vagrantfile
           password: <%= ENV['DB_PASSWORD'] %>
 
   - Or, hard-code your `database.yml` file to use the same config as `ansible/config.yml` (not recommended)
-
-## Usage
-
-- From within your Rails app folder, run `vagrant ssh`. This will connect you to the Vagrant box.
-- From within the Vagrant box, run `cd /vagrant`
-- If this is a new Rails app that hasn't been created yet, run `rails new .`. This will create a new Rails app in that folder
 - Run any of your normal Rails setup commands, like `bundle install` and `bin/rake db:migrate`
 - Run `bin/rails server -b 0.0.0.0`
 
