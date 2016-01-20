@@ -24,7 +24,7 @@ Vagrantfile
 - If this is a new Rails app that hasn't been created yet, run `rails new .`. This will create a new Rails app in that folder
 - Set up your app to use the database connection provided. Either:
   - Install the [`dotenv`](https://github.com/bkeepers/dotenv) gem and update your `database.yml` with the following entries:
-        ```
+        ```yml
         development:
           host:     <%= ENV['DB_HOST'] %>
           database: <%= ENV['DB_NAME'] %>
@@ -35,7 +35,7 @@ Vagrantfile
           database: <%= ENV['DB_NAME'] %>_test
           username: <%= ENV['DB_USERNAME'] %>
           password: <%= ENV['DB_PASSWORD'] %>
-          ```
+        ```
 
   - Or, hard-code your `database.yml` file to use the same config as `ansible/config.yml` (not recommended)
 - Run any of your normal Rails setup commands, like `bundle install` and `bin/rake db:migrate`
